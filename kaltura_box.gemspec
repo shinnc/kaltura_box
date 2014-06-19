@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shinn Chong"]
   spec.email         = ["shinn@tinkerbox.com.sg"]
   spec.summary       = %q{Ruby wrapper for Kaltura API}
-  spec.description   = %q{A very early development build of Kaltura API gem.}
+  spec.description   = spec.summary
   spec.homepage      = "https://github.com/tinkerbox/kaltura_box"
   spec.license       = "MIT"
 
@@ -17,6 +17,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  spec.add_dependency('velir_kaltura-ruby', '~> 0.4')
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
