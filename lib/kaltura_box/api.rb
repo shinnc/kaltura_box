@@ -1,4 +1,5 @@
 require 'kaltura'
+require 'kaltura_box/configuration'
 
 module KalturaBox
   class APIWrapper

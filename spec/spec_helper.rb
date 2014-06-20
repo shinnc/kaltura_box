@@ -2,9 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
-require 'kaltura_box/api'
-require 'kaltura_box/configuration'
-
+require 'kaltura_box'
 
 module KalturaBoxTest
   def self.setup!
