@@ -9,7 +9,7 @@ describe "KalturaBox::Entry" do
 
   before(:each) { KalturaBoxTest.setup! }
 
-  describe "instance methods" do
+  describe "class methods" do
 
     let(:videos) { Video.video_list }
 
@@ -21,6 +21,10 @@ describe "KalturaBox::Entry" do
       before(:each) { KalturaBoxTest.setup_db! }
       it { expect{Video.update_all_videos!}.to change{Video.count}.from(0).to(videos.count) }
     end
+
+  end
+
+  describe "instance methods" do
 
   end
 
