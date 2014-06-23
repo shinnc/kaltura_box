@@ -25,6 +25,13 @@ describe "KalturaBox::Entry" do
   end
 
   describe "instance methods" do
+    before(:all) { KalturaBoxTest.setup_db! }
+
+    let(:video) { Video.new(entry_id: "0_7ivwzhbh") }
+
+    context "get" do
+      it { expect(video.get.id).to eq "0_7ivwzhbh" }
+    end
 
   end
 

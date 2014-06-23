@@ -7,7 +7,20 @@ module KalturaBox
 
     #
     # Entry object should have the following attributes:
+    #
     # entry_id
+    # title
+    # description
+    # title
+    # description
+    # thumbnail_url
+    # data_url
+    # download_url
+    # ms_duration
+    # tags
+    # plays
+    # views
+    #
 
     def self.included(base)
       base.extend ClassMethods
