@@ -9,13 +9,17 @@ module KalturaBox
 
       def create
         self.setup_config unless @client_config
-        @client = Kaltura::KalturaClientBase.new(@client_config)
+        @client = Kaltura::KalturaClient.new(@client_config)
+        @client.ks = @session_key
+        @client
       end
 
       def setup_config
         raise "Missing Partner Identifier" unless KalturaBox.config.partner_id
         @client_config = Kaltura::KalturaConfiguration.new(KalturaBox.config.partner_id)
         @client_config.service_url = KalturaBox.config.service_url
+
+        self.generate_session_key
 
         @client_config
       end
@@ -26,8 +30,7 @@ module KalturaBox
         raise "Missing Administrator Secret" unless KalturaBox.config.administrator_secret
         begin
           @session_key = @client.session_service.start(KalturaBox.config.administrator_secret, '', Kaltura::KalturaSessionType::ADMIN)
-          @client.ks = @session_key
-        rescue Kaltura::APIError => e
+        rescue Kaltura::KalturaAPIError => e
           puts e.message
         end
       end
