@@ -12,8 +12,12 @@ describe "KalturaBox::Entry" do
   describe "instance methods" do
 
     context "list" do
-      it "to return KalturaMediaListResponse" do
-        expect(Video.list.class).to eq Kaltura::KalturaMediaListResponse
+
+      before(:each) { KalturaBoxTest.setup_db! }
+
+      it "to return an Array" do
+        zxc = Video.update_all_videos!
+        expect(zxc.class).to eq Array
       end
     end
 
