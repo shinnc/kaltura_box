@@ -7,8 +7,7 @@ module KalturaBox
     module ClassMethods
 
       def video_list
-        KalturaBox::Client.update_session
-        client = KalturaBox::Client.create
+        client = KalturaBox::Client.update_session
         media = Kaltura::KalturaMediaService.new(client)
         media_list = media.list
         media_list.to_params["objects"].reject { |v| v.media_type != 1  }

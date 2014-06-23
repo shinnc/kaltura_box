@@ -11,14 +11,15 @@ describe "KalturaBox::Entry" do
 
   describe "instance methods" do
 
-    context "list" do
+    let(:videos) { Video.video_list }
 
+    context "video_list" do
+      it { expect(videos.class).to eq Array }
+    end
+
+    context "update all videos" do
       before(:each) { KalturaBoxTest.setup_db! }
-
-      it "to return an Array" do
-        zxc = Video.update_all_videos!
-        expect(zxc.class).to eq Array
-      end
+      it { expect{Video.update_all_videos!}.to change{Video.count}.from(0).to(videos.count) }
     end
 
   end

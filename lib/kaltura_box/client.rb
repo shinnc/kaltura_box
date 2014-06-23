@@ -36,12 +36,7 @@ module KalturaBox
       end
 
       def update_session
-        if @client
-          true
-        else
-          self.create
-          true
-        end
+        @client ? @client : self.create
       end
 
     end

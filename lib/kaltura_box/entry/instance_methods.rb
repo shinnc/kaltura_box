@@ -3,8 +3,7 @@ module KalturaBox
     module InstanceMethods
 
       def get
-        KalturaBox::Client.update_session
-        client = KalturaBox::Client.create
+        client = KalturaBox::Client.update_session
         media = Kaltura::KalturaMediaService.new(client)
         media.get(self.entry_id)
       end
