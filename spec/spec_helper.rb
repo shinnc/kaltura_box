@@ -32,7 +32,16 @@ module KalturaBoxTest
       def change
         create_table :videos, :force => true do |t|
           t.string :entry_id
+          t.string :title
           t.string :description
+          t.string :thumbnail_url
+          t.string :data_url
+          t.string :download_url
+          t.string :ms_duration
+          t.string :tags
+          t.string :plays
+          t.string :views
+
           t.timestamps
         end
       end
