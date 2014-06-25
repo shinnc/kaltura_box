@@ -33,8 +33,16 @@ describe "KalturaBox::Category" do
 
     before { KalturaBoxTest.setup_db! }
 
+    let!(:category) { Category.add("new_cat2", "New Category 2") }
+
+    context "update" do
+      xit "Looking for a way to remove the updated category on Kaltura" do
+        expect{category.edit(name: "new_cat3", description: "New Category 3")}.to change{category.name}.from("new_cat2").to("new_cat3")
+      end
+    end
+
     context "remove" do
-      let!(:category) { Category.add("new_cat2", "New Category 2") }
+      let!(:category) { Category.add("new_cat4", "New Category 4") }
       it { expect{category.remove}.to change{Category.count}.by(-1) }
     end
 
