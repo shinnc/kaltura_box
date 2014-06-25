@@ -10,7 +10,7 @@ module KalturaBox
         client = KalturaBox::Client.update_session
         media = Kaltura::KalturaMediaService.new(client)
         media_list = media.list
-        media_list.to_params["objects"].reject { |v| v.media_type != 1  }
+        media_list.objects.reject { |v| v.media_type != 1  }
       end
 
       def update_all_videos!

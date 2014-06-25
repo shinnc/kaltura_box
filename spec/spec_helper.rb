@@ -30,7 +30,7 @@ module KalturaBoxTest
     migration = Class.new(ActiveRecord::Migration) do
 
       def change
-        create_table :videos, :force => true do |t|
+        create_table :videos, force: true do |t|
           t.string :entry_id
           t.string :title
           t.string :description
@@ -41,6 +41,17 @@ module KalturaBoxTest
           t.string :tags
           t.string :plays
           t.string :views
+
+          t.timestamps
+        end
+
+        create_table :categories, force: true do |t|
+          t.string :name
+          t.string :full_name
+          t.string :description
+          t.integer :ref_id
+          t.string :entries_count
+          t.integer :video_id
 
           t.timestamps
         end
