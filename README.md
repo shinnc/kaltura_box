@@ -1,6 +1,8 @@
 # KalturaBox
 
-Ruby wrapper for Kaltura API
+Customized Ruby wrapper for Kaltura API
+
+Heavily influenced and continuation of [Kaltura_Fu](https://github.com/Velir/kaltura_fu)
 
 ## Installation
 
@@ -18,7 +20,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    # For the Entry class
+    class Video < ActiveRecord::Base
+      include KalturaBox::Entry
+    end
+
+    # Category class
+    class Category < ActiveRecord::Base
+      include KalturaBox::Category
+    end
+
+    # Entry listing from Kaltura
+    Video.video_list
+
+    # Create videos based on Kaltura entries
+    Video.update_all_videos!
+
+    # Retrieve a kaltura entry
+    video = Video.new(entry_id: "0_7ivwzhbh")
+    video.get
+
+    # Tagging
+    video.set_tags = "noodles, food, yummy" # Create a new set of tags
+    video.add_tags = "rice, fruits" # Add more tags to the existing tag list
+    video.add_tag("bacon") # Add a single tag
+    video.get_tags # Retrieve tags
+
+    # Kaltura Metadata
+    video.set(name: "bla", description: "blablabla")
+    video.set_name = "bla"
+    video.set_description = "blablabla"
 
 ## Contributing
 

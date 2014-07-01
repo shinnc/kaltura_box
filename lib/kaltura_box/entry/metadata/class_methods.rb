@@ -31,7 +31,7 @@ module KalturaBox
         ##
         def define_set_method(attr_name)
           evaluate_attribute_method( attr_name,
-            "def set_#{attr_name}(entry,new_value);set_attribute('#{attr_name}',entry,new_value);end",
+            "def set_#{attr_name}(new_value);set_attribute('#{attr_name}',self.entry_id,new_value);end",
             "set_#{attr_name}"
           )
         end
@@ -41,14 +41,14 @@ module KalturaBox
         ##
         def define_get_method(attr_name)
           evaluate_attribute_method( attr_name,
-            "def get_#{attr_name}(entry);get_entry(entry).send('#{attr_name}');end",
+            "def get_#{attr_name};get_entry(self.entry_id).send('#{attr_name}');end",
             "get_#{attr_name}"
           )
         end
 
         def define_add_method(attr_name)
           evaluate_attribute_method( attr_name,
-            "def add_#{attr_name}(entry,new_value);add_attribute('#{attr_name}',entry,new_value);end",
+            "def add_#{attr_name}(new_value);add_attribute('#{attr_name}',self.entry_id,new_value);end",
             "add_#{attr_name}"
           )
         end

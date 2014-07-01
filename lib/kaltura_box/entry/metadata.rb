@@ -85,9 +85,6 @@ module KalturaBox
       ##
       def set_attribute(attr_name,entry_id,value)
         client = KalturaBox::Client.update_session
-
-        add_categories_to_kaltura(value) if (attr_name =~ /^(.*)_categories/ || attr_name =~ /^categories/)
-
         media_entry = Kaltura::KalturaMediaEntry.new
         media_entry.send("#{attr_name}=",value)
         client.media_service.update(entry_id,media_entry).send(attr_name.to_sym)
@@ -107,20 +104,6 @@ module KalturaBox
         attributes.each do |key,value|
           attribute = key.to_s
           set_attribute(attribute,entry_id,value) if valid_entry_attribute?(key)
-        end
-      end
-      ##
-      # @private
-      ##
-      def add_categories_to_kaltura(categories)
-        client = KalturaBox::Client.update_session
-
-        categories.split(",").each do |category|
-          unless category_exists?(category)
-            cat = Kaltura::KalturaCategory.new
-            cat.name = category
-            client.category_service.add(cat)
-          end
         end
       end
 
@@ -157,9 +140,6 @@ module KalturaBox
       ##
       def add_attribute(attr_name,entry_id,value)
         client = KalturaBox::Client.update_session
-
-
-        add_categories_to_kaltura(value) if (attr_name =~ /^(.*)_categor(ies|y)/ || attr_name =~ /^categor(ies|y)/)
 
         old_attributes = client.media_service.get(entry_id).send(attr_name.to_sym)
         media_entry = Kaltura::KalturaMediaEntry.new
