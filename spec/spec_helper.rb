@@ -61,4 +61,8 @@ module KalturaBoxTest
 
     migration.new.migrate(:up)
   end
+
+  def self.sample_video
+    File.open(File.join(File.dirname(__FILE__),'support','video.flv'))
+  end
 end

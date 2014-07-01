@@ -1,5 +1,6 @@
 require 'kaltura_box/entry/class_methods'
 require 'kaltura_box/entry/instance_methods'
+require 'kaltura_box/entry/metadata'
 
 module KalturaBox
   module Entry
@@ -26,6 +27,7 @@ module KalturaBox
       base.class_eval do
         include InstanceMethods
         include ClassMethods
+        include Metadata
       end
       super
     end
