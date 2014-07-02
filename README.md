@@ -20,39 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-    # For the Entry class
-    class Video < ActiveRecord::Base
-      include KalturaBox::Entry
-    end
+```ruby
+# For the Entry class
+class Video < ActiveRecord::Base
+  include KalturaBox::Entry
+end
 
-    # Category class
-    class Category < ActiveRecord::Base
-      include KalturaBox::Category
-    end
+# Category class
+class Category < ActiveRecord::Base
+  include KalturaBox::Category
+end
 
-    # Entry listing from Kaltura
-    Video.video_list
+# Entry listing from Kaltura
+Video.video_list
 
-    # Search
-    Video.video_list("search string here")
+# Search
+Video.video_list("search string here")
 
-    # Create videos based on Kaltura entries
-    Video.update_all_videos!
+# Create videos based on Kaltura entries
+Video.update_all_videos!
 
-    # Retrieve a kaltura entry
-    video = Video.new(entry_id: "0_7ivwzhbh")
-    video.get
+# Retrieve a kaltura entry
+video = Video.new(entry_id: "0_7ivwzhbh")
+video.get
 
-    # Tagging
-    video.set_tags = "noodles, food, yummy" # Create a new set of tags
-    video.add_tags = "rice, fruits" # Add more tags to the existing tag list
-    video.add_tag("bacon") # Add a single tag
-    video.get_tags # Retrieve tags
+# Tagging
+video.set_tags = "noodles, food, yummy" # Create a new set of tags
+video.add_tags = "rice, fruits" # Add more tags to the existing tag list
+video.add_tag("bacon") # Add a single tag
+video.get_tags # Retrieve tags
 
-    # Kaltura Metadata
-    video.set(name: "bla", description: "blablabla")
-    video.set_name = "bla"
-    video.set_description = "blablabla"
+# Kaltura Metadata
+video.set(name: "bla", description: "blablabla")
+video.set_name = "bla"
+video.set_description = "blablabla"
+```
 
 ## Contributing
 
