@@ -16,7 +16,7 @@ module KalturaBox
     ##
     # Convienence to include SWFObject and the required Kaltura upload embed javascripts.
     ##
-    def include_kaltura_fu(*args)
+    def include_kaltura_box(*args)
       content = javascript_include_tag('kaltura_upload')
       content << javascript_include_tag('//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js')
     end
