@@ -22,10 +22,20 @@ module KalturaBox
         end
       end
 
-      def video_list
+      def video_list(keyword = nil)
         client = KalturaBox::Client.update_session
         media = Kaltura::KalturaMediaService.new(client)
-        media_list = media.list
+
+        if keyword
+          filter = Kaltura::KalturaBaseEntryFilter.new
+          filter.free_text = keyword
+          media_list = media.list(filter)
+        else
+          media_list = media.list
+        end
+
+        return nil unless media_list.objects
+
         media_list.objects.reject { |v| v.media_type != 1  }
       end
 

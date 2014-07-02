@@ -15,6 +15,23 @@ describe "KalturaBox::Entry" do
 
     context "video_list" do
       it { expect(videos.class).to eq Array }
+
+      describe "searching" do
+
+        context "valid search" do
+          it "returns an array" do
+            expect(Video.video_list("education").class).to eq Array
+          end
+        end
+
+        context "invalid search" do
+          it "returns nil" do
+            expect(Video.video_list("blabla")).to be_nil
+          end
+        end
+
+      end
+
     end
 
     context "update all videos" do

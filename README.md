@@ -33,6 +33,9 @@ Or install it yourself as:
     # Entry listing from Kaltura
     Video.video_list
 
+    # Search
+    Video.video_list("search string here")
+
     # Create videos based on Kaltura entries
     Video.update_all_videos!
 
