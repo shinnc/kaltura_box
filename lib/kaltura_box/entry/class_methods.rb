@@ -22,6 +22,22 @@ module KalturaBox
         end
       end
 
+      def add_thumbnail(entry_id, value, type=nil)
+        client = KalturaBox::Client.update_session
+        media_service = Kaltura::KalturaMediaService.new(client)
+        media = nil
+
+        case type
+        when :jpg
+          media = media_service.update_thumbnail_jpeg(entry_id, value)
+        when :url
+          media = media_service.update_thumbnail_from_url(entry_id, value)
+        else
+          media = media_service.update_thumbnail(entry_id, value)
+        end
+        media.thumbnail_url
+      end
+
       def video_list(keyword = nil)
         client = KalturaBox::Client.update_session
         media = Kaltura::KalturaMediaService.new(client)
@@ -34,14 +50,14 @@ module KalturaBox
           media_list = media.list
         end
 
-        return nil unless media_list.objects
+        return nil unless media_list.present? && media_list.objects
 
         media_list.objects.reject { |v| v.media_type != 1  }
       end
 
-      def update_all_videos!
+      def update_all_videos!(company_id = nil)
         video_list.each do |v|
-          self.create(
+          entry = self.new(
             entry_id: v.id,
             title: v.name,
             description: v.description,
@@ -49,10 +65,12 @@ module KalturaBox
             data_url: v.data_url,
             download_url: v.download_url,
             ms_duration: v.ms_duration,
-            tags: v.tags,
             plays: v.plays,
-            views: v.views
+            views: v.views,
+            company_id: company_id
           )
+          entry.tag_list = v.tags
+          entry.save
         end
       end
 
