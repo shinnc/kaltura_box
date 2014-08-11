@@ -29,7 +29,7 @@ module KalturaBox
 
         raise "Missing Administrator Secret" unless KalturaBox.config.administrator_secret
         begin
-          @session_key = @client.session_service.start(KalturaBox.config.administrator_secret, '', Kaltura::KalturaSessionType::ADMIN)
+          @session_key = @client.session_service.start(KalturaBox.config.administrator_secret, '', Kaltura::KalturaSessionType::ADMIN, KalturaBox.config.partner_id, 315360000)
         rescue Kaltura::KalturaAPIError => e
           puts e.message
         end
