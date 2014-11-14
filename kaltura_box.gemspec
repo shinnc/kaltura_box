@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = KalturaBox::VERSION
   spec.authors       = ["Shinn Chong"]
   spec.email         = ["shinnyx@gmail.com"]
-  spec.summary       = %q{Ruby wrapper for Kaltura API}
+  spec.summary       = %q{Ruby wrapper for Kaltura API on Active Record}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/shinnyx/kaltura_box"
   spec.license       = "MIT"

@@ -55,7 +55,7 @@ module KalturaBox
         media_list.objects.reject { |v| v.media_type != 1  }
       end
 
-      def update_all_videos!(company_id = nil)
+      def update_all_videos!(options={})
         video_list.each do |v|
           entry = self.new(
             entry_id: v.id,
@@ -66,10 +66,10 @@ module KalturaBox
             download_url: v.download_url,
             ms_duration: v.ms_duration,
             plays: v.plays,
-            views: v.views,
-            company_id: company_id
+            views: v.views
           )
-          entry.tag_list = v.tags
+          options.each { |opt| entry.send("#{opt.key}=#{opt.value}") }
+          entry.tag_list = v.tags if entry.try(:tag_list)
           entry.save
         end
       end

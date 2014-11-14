@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/shinnyx/kaltura_box.svg)](https://travis-ci.org/shinnyx/kaltura_box)
 [![Gem Version](https://badge.fury.io/rb/kaltura_box.svg)](http://badge.fury.io/rb/kaltura_box)
 
-Customized Ruby wrapper for Kaltura API
+Customized Ruby wrapper for Kaltura API on Active Record
 
 Heavily influenced and continuation of [Kaltura_Fu](https://github.com/Velir/kaltura_fu)
 
