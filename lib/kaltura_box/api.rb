@@ -8,6 +8,5 @@ module KalturaBox
     def initialize
       self.client = ::Kaltura::KalturaClientBase.new(KalturaBox.config)
     end
-
   end
 end
