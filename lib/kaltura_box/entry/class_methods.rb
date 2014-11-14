@@ -68,7 +68,7 @@ module KalturaBox
             plays: v.plays,
             views: v.views
           )
-          options.each { |opt| entry.send("#{opt.key}=#{opt.value}") }
+          options.each { |key, value| entry.send("#{key}=", value) }
           entry.tag_list = v.tags if entry.try(:tag_list)
           entry.save
         end

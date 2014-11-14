@@ -35,8 +35,13 @@ describe "KalturaBox::Entry" do
     end
 
     context "update all videos" do
-      before(:each) { KalturaBoxTest.setup_db! }
-      it { expect{Video.update_all_videos!}.to change{Video.count}.from(0).to(videos.count) }
+      before(:each) do
+        KalturaBoxTest.setup_db!
+        Video.update_all_videos!(company_id: 5)
+      end
+
+      it { expect(Video.count).to eq videos.count }
+      it { expect(Video.last.company_id).to eq 5 }
     end
 
   end

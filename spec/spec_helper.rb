@@ -41,6 +41,7 @@ module KalturaBoxTest
           t.string :tags
           t.string :plays
           t.string :views
+          t.integer :company_id # test for custom field
 
           t.timestamps
         end
