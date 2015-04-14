@@ -5,7 +5,9 @@
 
 Customized Ruby wrapper for Kaltura API on Active Record
 
-Heavily influenced and continuation of [Kaltura_Fu](https://github.com/Velir/kaltura_fu)
+**THIS GEM IS NOT BEING MAINTENANCED ANYMORE**
+
+Heavily influenced from [Kaltura_Fu](https://github.com/Velir/kaltura_fu)
 
 ## Installation
 
