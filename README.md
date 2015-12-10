@@ -5,6 +5,8 @@
 
 Customized Ruby wrapper for Kaltura API on Active Record
 
+**THIS GEM IS NOT BEING MAINTAINED ANYMORE**
+
 Heavily influenced and continuation of [Kaltura_Fu](https://github.com/Velir/kaltura_fu)
 
 ## Installation
@@ -12,7 +14,6 @@ Heavily influenced and continuation of [Kaltura_Fu](https://github.com/Velir/kal
 Add this line to your application's Gemfile:
 
     gem 'kaltura_box'
-    gem 'kaltura-ruby-client', github: 'tinkerbox/kaltura-ruby-client'
 
 And then execute:
 
